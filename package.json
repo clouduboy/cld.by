@@ -1,0 +1,25 @@
+{
+  "name": "clouduboy-short-link-host",
+  "version": "0.1.0",
+  "description": "Clouduboy short link host",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/clouduboy/cld.by.git"
+  },
+  "keywords": [
+    "clouduboy"
+  ],
+  "author": "István Szmozsánszky 'Flaki' <clouduboy@flaki.hu> (https://clouduboy.org)",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/clouduboy/cld.by/issues"
+  },
+  "homepage": "https://github.com/clouduboy/cld.by#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
