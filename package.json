@@ -4,7 +4,9 @@
   "description": "Clouduboy short link host",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "git pull && npm install && pm2 start index.js --name cld_by",
+    "update": "pm2 stop cld_by && git pull && npm install && pm2 start cld_by"
   },
   "repository": {
     "type": "git",
