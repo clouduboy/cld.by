@@ -38,17 +38,20 @@ function setup() {
         let [,label, url] = l.match(/^([\w\-]+)\:?\s+(.+)$/, 2)
 
         // MicroCanvas examples root path
-        url = url.replace('<microcanvas-examples>', 'https://clouduboy.github.io/microcanvas/examples/')
+        // TODO: move to config file
+        url = url.replace('<microcanvas-examples>', 'https://clouduboy.github.io/microcanvas/examples')
         links.set(label, url)
       })
 
       console.log(`Loaded ${links.size} link mappings`)
-      return links
   }
   catch (e) {
     console.error(`No links.ini found. (${e.toString()})`)
     // No links.ini
   }
+
+  // Make sure we generate a new Map (even if it's empty)
+  return links
 }
 
 // Create a virtual host that will redirect incoming requests to the editor
