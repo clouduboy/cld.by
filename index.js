@@ -24,8 +24,16 @@ function init() {
   // Static content
   slh.use(express.static(CFG.rootdir+'/www'))
 
+  // Session managemement
+  require('./modules/sessions').handle(slh)
+
+  // Authentication
+  const auth = require('./modules/auth')
+  auth.init()
+  auth.handle(slh)
+
   // Administration
-  slh.use('/\\+admin', express.json(), require('./modules/admin'))
+  require('./modules/admin').handle(slh)
 
 
   // Load & initialize request handlers
