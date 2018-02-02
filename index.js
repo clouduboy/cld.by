@@ -2,7 +2,7 @@
 
 // Dependencies
 const express = require('express')
-
+const CFG = require('./config')()
 
 // Init returns an Express server module
 module.exports = init
@@ -16,7 +16,7 @@ const server = init()
 
 
 // Serve on :3010
-server.listen(3010)
+server.listen(CFG.server_port||3000)
 
 
 
@@ -84,9 +84,11 @@ function init() {
   slh.get('/:slug', () => {})
 
   // All other requests redirect to main page
-  slh.get('*', (req, res) => {
-    res.redirect('https://clouduboy.org/')
-  })
+  if (CFG.home_url) {
+    slh.get('*', (req, res) => {
+      res.redirect(CFG.home_url)
+    })
+  }
 
 
   // Create vhost
