@@ -21,6 +21,11 @@ console.log("Serving on :" + (CFG.server_port||3000))
 function init() {
   const slh = express()
 
+  // Static content
+  slh.use(express.static(CFG.rootdir+'/www'))
+
+  // Administration
+  slh.use('/\\+admin', express.json(), require('./modules/admin'))
 
 
   // Load & initialize request handlers
