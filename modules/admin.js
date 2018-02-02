@@ -8,7 +8,10 @@ const LINKS_FILE = CFG.rootdir+'/data/links.ini'
 module.exports = (req, res) => {
   // Save configuration
   if (req.body && req.body.action === 'SaveConfig') {
-    // TODO: create backup
+    // Create backup before overwriting config
+    // (only one backup per day is retained)
+    fs.copyFileSync(LINKS_FILE, `${LINKS_FILE}.${(new Date).toISOString().substr(0,10)}`)
+
     // Overwrite config file
     fs.writeFileSync(LINKS_FILE, req.body.contents)
 
