@@ -1,13 +1,15 @@
 'use strict'
 
 module.exports = function() {
-  try {
-    const cfg = require('fs').readFileSync('./data/config.json').toString()
-    const config = JSON.parse(cfg)
+  let config = { rootdir: __dirname }
 
-    return config
+  try {
+    const cfgJson = require('fs').readFileSync('./data/config.json').toString()
+    const cfg = JSON.parse(cfgJson)
+
+    return Object.assign(config, cfg)
   }
   catch(e) {
-    return {}
+    return config
   }
 }
