@@ -11,7 +11,6 @@ function init() {}
 
 // Check if provided slug is a valid session id
 function matchSlug(req, res, next, slug) {
-  console.log('redir', slug)
   if (slug.match(/^\w+\-\w+\-\w+$/)) {
     // Redirect to editor
     return res.redirect(`https://editor.clouduboy.org/${slug}`)
